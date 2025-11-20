@@ -27,19 +27,24 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew clean build
-    - name: Get the version
-      id: vars
-      run: echo ::set-output name=tag::$(echo ${GITHUB_SHA:10})
-    - name: Docker login
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
-      run : docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" docker.io
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ${{secrets.docker_username}}/${{secrets.repo_name}}:${{steps.vars.outputs.tag}}
-    - name: Publish dockerimage to docker hub
-      run: docker push ${{secrets.docker_username}}/${{secrets.repo_name}}:${{steps.vars.outputs.tag}}
-    - name: Build Docker image with latest tag
-      run: docker build . --file Dockerfile --tag ${{secrets.docker_username}}/${{secrets.repo_name}}:latest
-    - name: Publish dockerimage to docker hub
-      run: docker push ${{secrets.docker_username}}/${{secrets.repo_name}}:latest
+    - name: build the docker image
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        dockerfile: Dockerfile
+        push: false
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.repo_name }}:latest
+
+    - name: login to docker hub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: push the docker image to docker hub
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        dockerfile: Dockerfile
+        push: true
+        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.repo_name }}:latest
