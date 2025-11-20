@@ -27,24 +27,14 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew clean build
-    - name: build the docker image
-      uses: docker/build-push-action@v4
-      with:
-        context: .
-        dockerfile: Dockerfile
-        push: false
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.repo_name }}:latest
-
     - name: login to docker hub
-      uses: docker/login-action@v1
+      uses: docker/login-action@v3
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-
     - name: push the docker image to docker hub
-      uses: docker/build-push-action@v4
+      uses: docker/build-push-action@v6
       with:
         context: .
-        dockerfile: Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.repo_name }}:latest
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.repo_name }}:latest
