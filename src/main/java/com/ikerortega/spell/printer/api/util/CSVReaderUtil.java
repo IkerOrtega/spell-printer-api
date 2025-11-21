@@ -1,4 +1,4 @@
-package com.ikerortega.spell_printer.util;
+package com.ikerortega.spell.printer.api.util;
 
 import com.opencsv.bean.CsvToBeanBuilder;
 import org.slf4j.Logger;
@@ -18,7 +18,7 @@ public class CSVReaderUtil {
             return new CsvToBeanBuilder<T>(new FileReader(ResourceUtils.getFile(path)))
                     .withType(objectclass).withFilter(line -> {
                         if(filter != null && !filter.isEmpty()) {
-                            return Arrays.stream(line).anyMatch(value -> value.toLowerCase().contains(filter.toLowerCase()));
+                            return Arrays.stream(line).anyMatch(val -> val.toLowerCase().contains(filter.toLowerCase()));
                         } else {
                             return true;
                         }

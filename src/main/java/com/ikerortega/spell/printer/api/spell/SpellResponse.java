@@ -1,4 +1,4 @@
-package com.ikerortega.spell_printer.spell;
+package com.ikerortega.spell.printer.api.spell;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

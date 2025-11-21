@@ -1,4 +1,4 @@
-package com.ikerortega.spell_printer;
+package com.ikerortega.spell.printer.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

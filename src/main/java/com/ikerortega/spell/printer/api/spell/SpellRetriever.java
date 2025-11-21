@@ -1,11 +1,11 @@
-package com.ikerortega.spell_printer.spell;
+package com.ikerortega.spell.printer.api.spell;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import com.ikerortega.spell_printer.util.CSVReaderUtil;
-import com.ikerortega.spell_printer.util.Constants;
+import com.ikerortega.spell.printer.api.util.CSVReaderUtil;
+import com.ikerortega.spell.printer.api.util.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -35,6 +35,6 @@ public class SpellRetriever {
         } catch (Exception e) {
             logger.error("Error retrieving spells: ", e);
         }
-        return title + "\n" + output;
+        return output;
     }
 }
