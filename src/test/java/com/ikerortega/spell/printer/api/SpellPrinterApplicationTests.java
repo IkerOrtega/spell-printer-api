@@ -1,4 +1,4 @@
-package com.ikerortega.spell_printer;
+package com.ikerortega.spell.printer.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.ikerortega.spell_printer.util;
+package com.ikerortega.spell.printer.api.util;
 
 public class Constants {
 

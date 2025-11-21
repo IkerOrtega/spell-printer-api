@@ -1,4 +1,4 @@
-package com.ikerortega.spell_printer.spell;
+package com.ikerortega.spell.printer.api.spell;
 
 import com.opencsv.bean.CsvBindAndSplitByName;
 import com.opencsv.bean.CsvBindByName;
