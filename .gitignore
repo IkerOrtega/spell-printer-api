@@ -40,4 +40,6 @@ out/
 
 
 ### properties ###
-.src/main/resources/application-ci.properties
+/src/main/resources/application-ci.properties
+/src/main/resources/application.properties
+/src/main/resources/application-pro.properties
