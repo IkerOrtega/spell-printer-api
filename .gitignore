@@ -35,3 +35,9 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### properties ###
+
+
+### properties ###
+.src/main/resources/application-ci.properties
