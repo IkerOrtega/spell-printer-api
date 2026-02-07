@@ -1,1 +1,0 @@
-export const env={"PUBLIC_SPELLS_API":"https://spells.ikerlab.com/api/v1/spell"}
